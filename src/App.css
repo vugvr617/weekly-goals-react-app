@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f7f8fd;
+  font-family: 'Poppins', sans-serif;
+}
+
+main {
+  width: 80%;
+  margin: auto;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media (max-width: 1100px) {
+  main {
+    flex-direction: column;
+  }
+}
