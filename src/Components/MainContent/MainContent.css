@@ -43,6 +43,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   min-height: 180px;
   margin: 2em 0;
@@ -51,62 +52,89 @@
   -webkit-box-shadow: 0px 3px 15px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 3px 15px 1px rgba(0, 0, 0, 0.1);
   width: 100%;
-  padding: 0 2em;
+  padding: 0 3em;
   color: #373e68;
 }
 
 .goal-text {
-    margin-left: 1em;
+  margin-left: 1em;
 }
 
 .goal-text h2 {
-    margin: 0;
+  margin: 0;
 }
 
 .goal-text p {
-    margin: 0;
+  margin: 0;
 }
 
 .content-badge {
-    display: flex;
-    min-height: 30px;
-    font-size: 13px;
-    background-color: #dcddf0;
-    width: max-content;
-    align-items: center;
-    padding: 0 0.5em;
-    border-radius: 10px;
-    margin-top: 0.2em;
-    font-weight: 700;
+  display: flex;
+  min-height: 30px;
+  font-size: 13px;
+  background-color: #dcddf0;
+  width: max-content;
+  align-items: center;
+  padding: 0 0.5em;
+  border-radius: 10px;
+  margin-top: 0.2em;
+  font-weight: 700;
 }
 
+.bi-x-square,
 .bi-dash-square,
 .bi-check-square {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
+.delete-button,
 .notcompleted-button,
 .completed-button {
-    color: #373e68;
-    background: none;
-    border: none;
-    cursor: pointer;
+  color: #373e68;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .completed-button:hover {
-    color: #04aa6d;
-    transition: 0.2s;
+  color: #04aa6d;
+  transition: 0.2s;
 }
 
+.delete-button:hover,
 .notcompleted-button:hover {
-    color: #fd1374;
-    transition: 0.2s;
+  color: #fd1374;
+  transition: 0.5s;
 }
 
-.badges-div{
-    display: flex;
-    gap: 5px;
+.badges-div {
+  display: flex;
+  gap: 5px;
+}
+
+.goal-inner-first {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.no-data-div {
+  width: 100%;
+  background-color:#dcddf0;
+  margin-top: 1em;
+  height: 75px;
+  border-radius: 10px;
+  align-items: center;
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  font-size: 20px;
+}
+
+.no-data-div p {
+  width: 100%;
+  text-align: center;
 }
 
 @media (max-width: 1100px) {
@@ -115,4 +143,3 @@
     margin-top: 2em;
   }
 }
-

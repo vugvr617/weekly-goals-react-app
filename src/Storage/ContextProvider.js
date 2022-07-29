@@ -29,6 +29,18 @@ export default function ContextProvider(props) {
             localStorage.setItem("goalArray", [JSON.stringify([...previousStorage, goal])]);
             setStateChanger((prevState) => { return prevState = prevState + 1 })
         },
+        deleteGoal: (title) => {
+            if (JSON.parse(localStorage.getItem("goalArray")) != null) {
+                var data = JSON.parse(localStorage.getItem("goalArray"))
+                for (let i in data) {
+                    if (data[i].title == title) {
+                        data.splice(i, 1);
+                    }
+                }
+                localStorage.setItem("goalArray", JSON.stringify([...data]));
+                setStateChanger((prevState) => { return prevState = prevState + 1 })
+            }
+        },
         setAsCompleted: (title) => {
             if (JSON.parse(localStorage.getItem("goalArray")) != null) {
                 var data = JSON.parse(localStorage.getItem("goalArray"))
@@ -44,10 +56,10 @@ export default function ContextProvider(props) {
         },
         setCurrentMonth: (month) => { setCurrentMonth(month) },
         setCurrentWeek: (week) => { setCurrentWeek(week) },
-        setImportant: (counter) => {setImportant(counter)},
-        setProgress: (counter) => {setProgress(counter)},
-        setCompletedCounter: (counter) => {setCompletedCounter(counter)},
-        setGoalCounter: (counter) => {setGoalCounter(counter)},
+        setImportant: (counter) => { setImportant(counter) },
+        setProgress: (counter) => { setProgress(counter) },
+        setCompletedCounter: (counter) => { setCompletedCounter(counter) },
+        setGoalCounter: (counter) => { setGoalCounter(counter) },
         setCurrentYear: (year) => { setCurrentYear(year) },
         setFormDisplay: () => { setFormDisplay((prevState) => { return !prevState }) }
     }

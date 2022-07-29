@@ -2,15 +2,16 @@ import './MainContent.css'
 import MainHeader from './MainHeader/MainHeader'
 import Goal from './Goal/Goal'
 import AppContext from '../../Storage/AppContext'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 
 export default function MainContent() {
     let goalCounter = 0;
     let importantCounter = 0;
     let completedCounter = 0;
     const ctx = useContext(AppContext);
+    const goalRef = useRef();
 
-    let dataInStorage;
+    let dataInStorage = [];
 
     useEffect(() => {
         if (JSON.parse(localStorage.getItem("goalArray")) != null) {
@@ -39,21 +40,27 @@ export default function MainContent() {
     ctx.setProgress(goalCounter-completedCounter)
     ctx.setGoalCounter(goalCounter);
 
+    let goalsDivInner = dataInStorage.map((data) => {
+        if (data.month == ctx.currentMonth && data.year == ctx.currentYear && data.week == ctx.currentWeek)
+            return <Goal title={data.title} isImportant={data.status} description={data.description} isCompleted={data.isCompleted}></Goal>
+    })
+
+
     return (
         <div className="main-content">
             <MainHeader goalCounter={goalCounter}></MainHeader>
-            <div className='goals-div'>
-                {dataInStorage &&
-                    dataInStorage.map((data) => {
-                        if (data.month == ctx.currentMonth && data.year == ctx.currentYear && data.week == ctx.currentWeek)
-                            return <Goal title={data.title} isImportant={data.status} description={data.description} isCompleted={data.isCompleted}></Goal>
-                    })
+            <div ref={goalRef} className='goals-div'>
+                {dataInStorage.length > 0 &&
+                    goalsDivInner
                 }
                 {/* {ctx.goalArray.map((goal) => {
                     if (goal.month == ctx.currentMonth && goal.year == ctx.currentYear && goal.week == ctx.currentWeek)
-                        return <Goal title={goal.title} isFromStorage={false} isImportant={goal.status} description={goal.description} isCompleted={goal.isCompleted}></Goal>
+                    return <Goal title={goal.title} isFromStorage={false} isImportant={goal.status} description={goal.description} isCompleted={goal.isCompleted}></Goal>
                 })} */}
             </div>
+                {
+                    goalRef.current != undefined && goalRef.current.children.length < 1 && <div className='no-data-div'><p>No data found.</p></div>
+                }
         </div>
     )
 }

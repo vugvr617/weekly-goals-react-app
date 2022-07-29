@@ -15,7 +15,7 @@ export default function SideForm() {
 
     useEffect(() => {
         setMonthValue(month[currentDate.getMonth()]);
-        setWeekValue(Math.ceil((currentDate.getDate())/7));
+        setWeekValue(Math.ceil((currentDate.getDate())/7) < 4 ? Math.ceil((currentDate.getDate())/7) : 4);
         setYearValue(currentDate.getFullYear());
     }, [])
 

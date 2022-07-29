@@ -8,7 +8,7 @@ export default function SideHeader () {
     return (
         <div className="side-header">
             <div className="header-inner">
-                <h2>Weekly Goals</h2>
+                <h2>ThisWeek</h2>
                 <h3>{ctx.currentMonth} {ctx.currentYear}, Week {ctx.currentWeek}</h3>
             </div>
         </div>

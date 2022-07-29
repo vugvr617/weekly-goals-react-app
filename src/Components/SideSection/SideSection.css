@@ -59,35 +59,35 @@ form {
 }
 
 .side-stats {
-    flex-direction: column;
-    align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .side-stats h2 {
-    margin: 0;
+  margin: 0;
 }
 
 .stats-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 5px;
-    width: 80%;
+  display: flex;
+  flex-direction: column;
+  line-height: 5px;
+  width: 80%;
 }
 
 .stats-text > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .stats-inner {
-    font-size: 16px;
-    font-weight: 400;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
 
 .side-form {
@@ -113,32 +113,42 @@ form {
 }
 
 .badge {
-    min-height: 7px;
-    min-width: 7px;
-    border-radius: 50%;
+  min-height: 7px;
+  min-width: 7px;
+  border-radius: 50%;
 }
 
 form > input {
-    font-family: 'Poppins';
-    border: none;
-    background-color: #4460e6;
-    border-radius: 10px;
-    color: white;
-    font-weight: 600;
-    min-height: 35px;
-    font-size: 16px;
-    cursor: pointer;
+  font-family: "Poppins";
+  border: none;
+  background-color: #4460e6;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  min-height: 35px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 @media (max-width: 1100px) {
-    .side-section {
-        width: 100%;
-        flex-direction: row;
-    }
+  .side-header {
+    padding: 0 1em;
+    display: flex;
+    align-items: center;
+  }
+  .side-stats {
+    padding: 0 1em;
+    display: flex;
+    align-items: center;
+  }
+  .side-section {
+    width: 100%;
+    flex-direction: row;
+  }
 }
 
 @media (max-width: 800px) {
-    .side-section {
-        flex-direction: column;
-    }
+  .side-section {
+    flex-direction: column;
+  }
 }
