@@ -9,6 +9,6 @@ An application to note goals by each week.
 
 <img src="https://i.ibb.co/J7b2pR4/weeklygoalspreview.png" alt="Preview" title="Optional title">
 
-## Demo
+## Live
 
-https://thisweek-app.vercel.app/
+<a href="https://thisweek-app.vercel.app/" target="_blank">Visit Vercell app page</a>
