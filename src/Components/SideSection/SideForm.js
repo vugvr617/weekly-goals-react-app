@@ -6,6 +6,7 @@ export default function SideForm() {
     const [thisMonth, setMonthValue] = useState();
     const [thisWeek, setWeekValue] = useState();
     const [thisYear, setYearValue] = useState();
+    const [thisMonthNum, setMonthNum] = useState();
     const weekRef = useRef();
     const monthRef = useRef();
     const yearRef = useRef();
@@ -17,12 +18,14 @@ export default function SideForm() {
         setMonthValue(month[currentDate.getMonth()]);
         setWeekValue(Math.ceil((currentDate.getDate())/7) < 4 ? Math.ceil((currentDate.getDate())/7) : 4);
         setYearValue(currentDate.getFullYear());
+        setMonthNum(currentDate.getMonth());
     }, [])
 
     useEffect(() => {
         ctx.setCurrentMonth(thisMonth);
         ctx.setCurrentWeek(thisWeek);
         ctx.setCurrentYear(thisYear)
+        ctx.setMonthNum(thisMonthNum);
         monthRef.current.value = thisMonth;
         weekRef.current.value = thisWeek;
         yearRef.current.value = thisYear;

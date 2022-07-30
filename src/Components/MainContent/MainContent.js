@@ -40,8 +40,18 @@ export default function MainContent() {
     ctx.setProgress(goalCounter-completedCounter)
     ctx.setGoalCounter(goalCounter);
 
-    let goalsDivInner = dataInStorage.map((data) => {
-        if (data.month == ctx.currentMonth && data.year == ctx.currentYear && data.week == ctx.currentWeek)
+    let goalsDivInnerCompleted = dataInStorage.map((data) => {
+        if (data.isCompleted && data.month == ctx.currentMonth && data.year == ctx.currentYear && data.week == ctx.currentWeek)
+            return <Goal title={data.title} isImportant={data.status} description={data.description} isCompleted={data.isCompleted}></Goal>
+    })
+
+    let goalsDivInnerImportant = dataInStorage.map((data) => {
+        if (!data.isCompleted && data.status == "Important" && data.month == ctx.currentMonth && data.year == ctx.currentYear && data.week == ctx.currentWeek)
+            return <Goal title={data.title} isImportant={data.status} description={data.description} isCompleted={data.isCompleted}></Goal>
+    })
+
+    let goalsDivInnerOptional = dataInStorage.map((data) => {
+        if (!data.isCompleted && data.status == "Optional" && data.month == ctx.currentMonth && data.year == ctx.currentYear && data.week == ctx.currentWeek)
             return <Goal title={data.title} isImportant={data.status} description={data.description} isCompleted={data.isCompleted}></Goal>
     })
 
@@ -51,12 +61,14 @@ export default function MainContent() {
             <MainHeader goalCounter={goalCounter}></MainHeader>
             <div ref={goalRef} className='goals-div'>
                 {dataInStorage.length > 0 &&
-                    goalsDivInner
+                    goalsDivInnerCompleted
                 }
-                {/* {ctx.goalArray.map((goal) => {
-                    if (goal.month == ctx.currentMonth && goal.year == ctx.currentYear && goal.week == ctx.currentWeek)
-                    return <Goal title={goal.title} isFromStorage={false} isImportant={goal.status} description={goal.description} isCompleted={goal.isCompleted}></Goal>
-                })} */}
+                {dataInStorage.length > 0 &&
+                    goalsDivInnerImportant
+                }
+                {dataInStorage.length > 0 &&
+                    goalsDivInnerOptional
+                }
             </div>
                 {
                     goalRef.current != undefined && goalRef.current.children.length < 1 && <div className='no-data-div'><p>No data found.</p></div>

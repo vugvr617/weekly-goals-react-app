@@ -4,6 +4,7 @@ import CompletedBadge from './CompletedBadge'
 import ImportantBadge from "./ImportantBadge";
 import AppContext from "../../../Storage/AppContext";
 import DeleteButton from "./DeleteButton";
+import TransferButton from "./TransferButton";
 
 export default function Goal(props) {
     const ctx = useContext(AppContext);
@@ -16,6 +17,10 @@ export default function Goal(props) {
 
     const deleteButtonHandler = () => {
         ctx.deleteGoal(props.title);
+    }
+
+    const transferButtonHandler = () => {
+        ctx.sendToNextWeek(props.title);
     }
 
     return (
@@ -37,7 +42,8 @@ export default function Goal(props) {
                     </div>
                 </div>
             </div>
-            <div>
+            <div className="buttons-div">
+                <TransferButton transferButtonHandler={transferButtonHandler}></TransferButton>
                 <DeleteButton deleteButtonHandler={deleteButtonHandler}></DeleteButton>
             </div>
         </div>
